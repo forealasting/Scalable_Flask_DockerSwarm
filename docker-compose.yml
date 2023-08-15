@@ -1,0 +1,16 @@
+version: "3.5"
+
+services:
+  web:
+    image: gwhsu/flask-fib:latest
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == worker
+      resources:
+        limits:
+          cpus: '1.0'
+    ports:
+      - "8080:5000"
+
